@@ -8,6 +8,15 @@ app.use('/dist', express.static('dist'));
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
+app.post('/api/users', async(req, res, next)=> {
+  try {
+    res.status(201).send(await User.create(req.body));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
 
 app.post('/api/things', async(req, res, next)=> {
   try {
