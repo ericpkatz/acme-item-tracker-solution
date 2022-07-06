@@ -13,6 +13,12 @@ const store = createStore((state = initialState, action)=> {
       things: state.things.filter(thing => thing.id !== action.thing.id )
     };
   }
+  if(action.type === 'DELETE_USER'){
+    return {
+      ...state, 
+      users: state.users.filter(user => user.id !== action.user.id )
+    };
+  }
   if(action.type === 'SET_THINGS'){
     return {...state, things: action.things };
   }
