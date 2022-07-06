@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 
-const Users = ({ users })=> {
+const Users = ({ users, createUser })=> {
   return (
     <div>
       <h1>Users</h1>
+      <button onClick={ createUser }>+</button>
       <ul>
         {
           users.map( user => {
@@ -26,4 +28,13 @@ const mapStateToProps = (state)=> {
     users: state.users
   };
 }
-export default connect(mapStateToProps)(Users);
+
+const mapDispatch = (dispatch)=> {
+  return {
+    createUser: async()=> {
+      const user = (await axios.post('/api/users', {name: Math.random()})).data;
+      dispatch({ type: 'CREATE_USER', user});
+    }
+  };
+}
+export default connect(mapStateToProps, mapDispatch)(Users);
