@@ -1,6 +1,6 @@
 x ability to delete a thing
 x ability to create a user
-- ability to delete a user
+x ability to delete a user
 - a thing should have ranking which defaults to 1 (display it)
 - add the ability to increase or decrease the ranking of a thing
 - the home page should show the thing(s) with the highest ranking
