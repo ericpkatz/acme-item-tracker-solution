@@ -7,6 +7,12 @@ const initialState = {
 };
 
 const store = createStore((state = initialState, action)=> { 
+  if(action.type === 'DELETE_THING'){
+    return {
+      ...state, 
+      things: state.things.filter(thing => thing.id !== action.thing.id )
+    };
+  }
   if(action.type === 'SET_THINGS'){
     return {...state, things: action.things };
   }
