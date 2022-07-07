@@ -29,7 +29,7 @@ const Things = ({ things, deleteThing, increment })=> {
 export default connect(
   (state)=> {
     return {
-      things: state.things
+      things: state.things,
     }
   },
   (dispatch)=> {
