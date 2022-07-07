@@ -27,6 +27,17 @@ app.post('/api/things', async(req, res, next)=> {
   }
 });
 
+app.put('/api/things/:id', async(req, res, next)=> {
+  try {
+    const thing = await Thing.findByPk(req.params.id);
+    await thing.update(req.body);
+    res.send(thing);
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
 app.delete('/api/users/:id', async(req, res, next)=> {
   try {
     const user = await User.findByPk(req.params.id);
