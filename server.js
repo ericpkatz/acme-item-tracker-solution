@@ -29,9 +29,6 @@ app.post('/api/things', async(req, res, next)=> {
 
 app.put('/api/things/:id', async(req, res, next)=> {
   try {
-    if(!req.body.userId){
-      req.body.userId = null;
-    }
     const thing = await Thing.findByPk(req.params.id);
     await thing.update(req.body);
     res.send(thing);
